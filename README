@@ -1,0 +1,12 @@
+PyQualities 0.0.2
+2013-07-20
+=======
+
+Python plotting tool for collections of 'qualities' (adjectives) as formatted in http://chymera.eu/opendata/pyqualities/Christian_pyqualities_nn.csv
+
+The current script dissects people into two categories - depending on whether or not you are engaged in a sexual relationship with them. This categoritzation can easily be changed by adding other TRUE values in the relevant column of your .csv file. The wording of the output will currently stay the same.
+
+The script will at present require python-2.7 with scipy, numpy, matplotlib, and pandas.
+
+Released under the GPLv3 licence.
+The project is led by Horea Christian (direct all correspondence to h.chr@mail.ru).
