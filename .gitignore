@@ -33,8 +33,10 @@ image-*.pdf
 image.pdf
 image.pmg
 image*.png
+figure*.png
+figure*.pdf
 
-#eclipse 
+#eclipse
 .project
 .pydevproject
 .settings/*
