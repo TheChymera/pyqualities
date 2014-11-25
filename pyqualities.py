@@ -62,7 +62,7 @@ adjectives_cols = list(adjectives_cols)
 max_score = full_df.drop(['name','how well do they know me (by me)','how well do they know me (by them)','sexual relationship'], axis=1).applymap(lambda x: x+1).count(axis=1)[0]
 full_df[adjectives_cols] = full_df[adjectives_cols].applymap(lambda x: max_score - x) # redefining scores based on the computed max_score
 full_df[adjectives_cols] = full_df[adjectives_cols].applymap(lambda x: 0 if x == max_score else x)
-full_df[adjectives_cols] = full_df[adjectives_cols].applymap(lambda x: x / max_score)
+full_df[adjectives_cols] = full_df[adjectives_cols].applymap(lambda x: x / (max_score-1))
 
 
 
@@ -93,6 +93,7 @@ ax1.set_xticks(ind_me + width/2)
 ax1.bar(ind_me,me_df[0], width, color='m', alpha=0.4, zorder = 1)
 ax1.set_ylabel('My Normalized Ratings', fontsize='11')
 axis.Axis.zoom(ax1.xaxis, -0.5)
+ax1.set_ylim(0, 1.05)
 
 ids_sex = sexual_rel_res.index
 ind_sex = np.arange(len(sexual_rel_res))
@@ -105,6 +106,7 @@ ax2.bar(ind_sex,sexual_rel_res['means'], width, color='m', alpha=0.4, zorder = 1
 ax2.errorbar(ind_sex+width/2, sexual_rel_res['means'], yerr=sexual_rel_res['sems'], ecolor='0.5', elinewidth='3', capsize=0, linestyle='None', zorder = 2)
 ax2.set_ylabel('Normalized Ratings by \n Sexual Partners', fontsize='11', multialignment='center')
 axis.Axis.zoom(ax2.xaxis, -0.5)
+ax2.set_ylim(0, 1.05)
 
 ids_nsex = nsexual_rel_res.index
 ind_nsex = np.arange(len(nsexual_rel_res))
@@ -117,5 +119,6 @@ ax3.bar(ind_nsex,nsexual_rel_res['means'], width, color='m', alpha=0.4, zorder =
 ax3.errorbar(ind_nsex+width/2, nsexual_rel_res['means'], yerr=nsexual_rel_res['sems'], ecolor='0.5', elinewidth='3', capsize=0, linestyle='None', zorder = 2)
 ax3.set_ylabel('Normalized Ratings excluding \n Sexual Partners', fontsize='11', multialignment='center')
 axis.Axis.zoom(ax3.xaxis, -0.5)
+ax3.set_ylim(0, 1.05)
 
 show()
